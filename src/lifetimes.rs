@@ -1,5 +1,12 @@
-// Lifecycle annotations is realationship between lifetimes of references
-// Need to specify lifetime parameters for functions or structs that use references
+// 1. Every reference in Rust has a lifetime, which is the scope for which that reference is valid
+// 2. Lifetimes annotations is realationship between lifetimes of references
+
+// 3. We must annotate types when multiple types are possible.
+// 4. In a similar way, we must annotate lifetimes when the lifetimes of references could be related in a few different ways.
+
+// 5. The main aim of lifetimes is to prevent dangling references, which cause a program to reference data other than the data it’s intended to reference.
+
+// We need (not always) to specify lifetime parameters for functions or structs that use references
 fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
     if x.len() > y.len() {
         x
@@ -8,8 +15,8 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
     }
 }
 
-// It works without lifecycle annotations (explicit form - fn first_word<'a>(s: &'a str) -> &'a str {..})
-// The patterns programmed into Rust’s analysis (compiler) of references are called the lifetime elision rules
+// It works without lifetime annotations (explicit form - fn first_word<'a>(s: &'a str) -> &'a str {..})
+// The patterns programmed into Rust’s analysis (compiler) of references are called the "lifetime elision" rules
 fn first_word(s: &str) -> &str {
     let bytes = s.as_bytes();
     for (i, &item) in bytes.iter().enumerate() {
@@ -20,8 +27,7 @@ fn first_word(s: &str) -> &str {
     &s[..]
 }
 
-// There are three rules of lifecycle auto intefence
-
+// There are three rules of lifetimes auto intefence
 // 1. Each parameter that is a reference gets its own lifetime parameter (all lifecycles is different)
 // 2. If there is exactly one input lifetime parameter, that lifetime is assigned to all output lifetime parameters
 // 3. If there are multiple input lifetime parameters, but one of them is &self or &mut self because this is a method,

@@ -28,9 +28,17 @@
 // mod traits;
 // use traits::test;
 
-// mod lifecycles;
-// use lifecycles::test;
+mod lifetimes;
+use lifetimes::test;
 
-mod tests;
+// mod tests;
 
-fn main() {}
+// mod grep_practice;
+// use grep_practice::test;
+
+// mod closures;
+// use closures::test;
+
+fn main() {
+    test();
+}
