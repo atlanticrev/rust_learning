@@ -28,8 +28,14 @@
 // mod traits;
 // use traits::test;
 
-mod lifetimes;
-use lifetimes::test;
+// mod lifetimes;
+// use lifetimes::test;
+
+// mod smart_pointers;
+// use smart_pointers::test;
+
+// mod ref_cell;
+// use ref_cell::test;
 
 // mod tests;
 
@@ -38,6 +44,9 @@ use lifetimes::test;
 
 // mod closures;
 // use closures::test;
+
+mod ref_weak;
+use ref_weak::test;
 
 fn main() {
     test();
